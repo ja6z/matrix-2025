@@ -3,15 +3,10 @@
   <slot />
 </template>
 <script setup>
+import { supabase } from "~/lib/supabase";
+
 useHead({
-  script: [
-    {
-      src: "https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js",
-    },
-    {
-      src: "https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js",
-    },
-  ],
+  script: [{}],
   link: [
     {
       rel: "stylesheet",
@@ -19,5 +14,21 @@ useHead({
       crossorigin: "",
     },
   ],
+});
+
+onMounted(() => {
+  //Verificar el login
+  //Verificar si es mas eficiente con localstorage o con vuex
+  supabase.auth
+    .getUser()
+    .then((r) => {
+      if (r.data.user == null) {
+        useLogin();
+      } else {
+      }
+      console.log(r);
+    })
+    .catch((e) => console.log(e));
+  //const login = useLogin()
 });
 </script>
