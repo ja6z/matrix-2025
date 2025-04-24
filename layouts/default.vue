@@ -1,9 +1,12 @@
 <template>
   ssdddd
+  {{logged}}
   <slot />
 </template>
+
 <script setup>
 import { supabase } from "~/lib/supabase";
+const logged = ref(false)
 
 useHead({
   script: [{}],
