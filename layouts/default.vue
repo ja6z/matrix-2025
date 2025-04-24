@@ -23,7 +23,7 @@ onMounted(() => {
     .getUser()
     .then((r) => {
       if (r.data.user == null) {
-       // useLogin();
+       useLogin();
       } else {
       }
       console.log(r);
